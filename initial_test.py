@@ -1,10 +1,10 @@
 import discord
 from discord.ext import commands
 
-client  = commands.Bot(command_prefix = '\')
+client  = commands.Bot(command_prefix = '.')
 
 @client.event
 async def on_ready():
-    print("Trudi's FINALLY ready")
+    print("The Bot Is Ready.")
 
 client.run("CODE")

@@ -1,10 +1,16 @@
 import discord
-from discord.ext import commands
 
-client  = commands.Bot(command_prefix = '.')
+class MyClient(discord.Client):
+    async def on_ready(self):
+        print('Logged on as', self.user)
 
-@client.event
-async def on_ready():
-    print("The Bot Is Ready.")
+    async def on_message(self, message):
+        # don't respond to ourselves
+        if message.author == self.user:
+            return
 
-client.run("CODE")
+        if message.content == 'hi':
+            await message.channel.send('hi')
+
+client = MyClient()
+client.run('Code')

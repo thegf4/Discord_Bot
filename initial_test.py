@@ -5,12 +5,17 @@ class MyClient(discord.Client):
         print('Logged on as', self.user)
 
     async def on_message(self, message):
-        # don't respond to ourselves
         if message.author == self.user:
             return
 
-        if message.content == 'hi':
-            await message.channel.send('hi')
+        if message.content == 'ping':
+            await message.channel.send('pong')
+    
+    async def on_member_join(member):
+        print(f'{member} has joined the server!')
+         
+    async def on_member_remove(member):
+        print(f'{member} has left the server!')
 
 client = MyClient()
-client.run('Code')
+client.run('CODE')
